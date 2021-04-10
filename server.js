@@ -17,9 +17,4 @@ app.get('/', (req, res) => {
 
 app.use('/api', api);
 
-const PORT = 3080;
-app.listen(PORT);
-
-// teste
-
-
+app.listen(process.env.PORT);
