@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
         background: #1b1b1b;
         overflow-x: hidden;
         text-decoration: none;
+        
     }
     button{
         font-weight: bold;

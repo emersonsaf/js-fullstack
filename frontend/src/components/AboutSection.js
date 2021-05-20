@@ -11,8 +11,8 @@ const AboutSection = () => {
                 <p>
                     I'm Computer scientist who is passionate about making code more accessibility.
                     creating technology to elevate people, and building community.
-                    Some technologies I enjoy working with include chatbots, the MERN( Mongo, Express,
-                    React and Node) stack and Phyton. I am currently work an awesome projects.
+                    Some technologies I enjoy working with  Mongo, Express,
+                    React and Node stack. I am currently work an awesome projects.
                 </p>
                 <button>Contact me</button>
             </Description>
