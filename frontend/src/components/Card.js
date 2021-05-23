@@ -2,75 +2,34 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-// import { useApi } from '../hooks/userApi'
+import { Link } from 'react-router-dom';
 
-const Card = () => {
-    //const { data } = useApi('/portfolio');
+const Card = ({ project }) => {
     return (
-        <>
-            <StyledCard>
+        <StyledCard>
+            <Link to={`/portfolio/${project.slug}`}>
                 <Content>
-                    <Image src="https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+                    <Image src={project.image} />
                     <Info>
-                        <h3>Titulo</h3>
-                        <h4>data</h4>
-                        <p>short description</p>
+                        <h3>{project.title}</h3>
+                        <h4>{project.createdAt}</h4>
+                        <p>{project.description}</p>
                     </Info>
                 </Content>
-            </StyledCard>
-            <StyledCard>
-                <Content>
-                    <Image src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                    <Info>
-                        <h3>Titulo</h3>
-                        <h4>data</h4>
-                        <p>short description</p>
-                    </Info>
-                </Content>
-            </StyledCard>
-            <StyledCard>
-                <Content>
-                    <Image src="https://images.pexels.com/photos/1089440/pexels-photo-1089440.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                    <Info>
-                        <h3>Titulo</h3>
-                        <h4>data</h4>
-                        <p>short description</p>
-                    </Info>
-                </Content>
-            </StyledCard>
-            <StyledCard>
-                <Content>
-                    <Image src="https://images.pexels.com/photos/698808/pexels-photo-698808.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                    <Info>
-                        <h3>Titulo</h3>
-                        <h4>data</h4>
-                        <p>short description</p>
-                    </Info>
-                </Content>
-            </StyledCard>
-            <StyledCard>
-                <Content>
-                    <Image src="https://images.pexels.com/photos/4312861/pexels-photo-4312861.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-                    <Info>
-                        <h3>Titulo</h3>
-                        <h4>data</h4>
-                        <p>short description</p>
-                    </Info>
-                </Content>
-            </StyledCard>
-
-        </>
+            </Link>
+        </StyledCard>
     )
 }
 
 const StyledCard = styled.div`
-    background-color: #696969;
     min-height: 30vh;
     border-color: #416cd5;
     text-align: center;
     border-radius: 1rem;
     cursor: pointer;
     overflow: hidden;
+    border: 1px solid yellow;
+    box-shadow: inset 0 2px 3px 0 rgba(255,255,255,.3), inset 0 -3px 6px 0 rgba(0,0,0,.2), 0 3px 2px 0 rgba(0,0,0,.2);
 `;
 
 const Content = styled.div`
@@ -78,13 +37,13 @@ const Content = styled.div`
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
-    width: 100%;
+    width: 70vh;
 
 `;
 
 const Image = styled.img`
-    width: 100%;
-    heigh: 100%;
+    width: 130%;
+    height: 45vh;
 
 `;
 

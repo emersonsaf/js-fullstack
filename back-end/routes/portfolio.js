@@ -7,7 +7,10 @@ const Portfolio = require('../models/Portfolio')
 router.post('/', async (req, res) => {
     const portfolio = new Portfolio({
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        longDescription: req.body.longDescription,
+        image: req.body.image,
+        technologies: req.body.technologies
     });
     try {
         const saverdPortfolio = await portfolio.save()
@@ -16,13 +19,12 @@ router.post('/', async (req, res) => {
             data: saverdPortfolio
         })
     } catch {
-        console.log("Erro")
+        console.log("Erro ao salvar")
     }
 })
 
 // READ ROUTE
 router.get('/', async (req, res) => {
-    //Search data in DB
     try {
         const portfolios = await Portfolio.find()
         res.json({
@@ -61,7 +63,10 @@ router.patch('/:slug', async (req, res) => {
             slug: req.params.slug
         }, {
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            longDescription: req.body.longDescription,
+            image: req.body.image,
+            technologies: req.body.technologies
         });
 
         res.json({

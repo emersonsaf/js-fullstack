@@ -21,10 +21,24 @@ const portfolioSchema = new Schema({
             type: String,
             required: true
         },
+        longDescription: {
+            type: String
+        },
         createdAt: {
             type: Date,
             default: Date.now()
         },
+        image: {
+            type: String,
+            required: true
+        },
+        technologies:[
+            {
+                label: String,
+                icon: String,
+                iconType: String
+            }
+        ],
         isDeleted:{
             type: Boolean,
             default: false,
