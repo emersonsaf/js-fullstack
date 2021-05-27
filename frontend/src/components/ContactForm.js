@@ -37,8 +37,8 @@ const Input = styled.div`
         height: 100%;
     }
     input:focus{
-        background-color: #416cd5;
-        color: yellow;
+
+        
     }
     textarea{
         width: 100%;
@@ -51,8 +51,7 @@ const Input = styled.div`
         resize: none;
     }
     textarea:focus{
-        background-color: #416cd5;
-        color: yellow;
+
     }
 `;
 

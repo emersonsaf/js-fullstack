@@ -20,7 +20,7 @@ export const Description = styled.div`
   z-index: 2;
   h2 {
     font-weight: lighter;
-    color: yellow;
+    color: rgb(4, 211, 97);
   }
    @media (max-width: 1300px) {
     padding: 0;

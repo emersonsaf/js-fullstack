@@ -20,7 +20,6 @@ const ContactMe = () => {
 
 const ContactStyled = styled.div`
     padding: 1rem 10rem;
-    colod: #353535;
     min-height: 90hv;
 `;
 

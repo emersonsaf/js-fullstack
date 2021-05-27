@@ -26,11 +26,8 @@ function App() {
           <Route exact path='/'>
             <AboutUs />
           </Route>
-          <Route exact path='/portfolio'>
+          <Route exact path={['/portfolio/:slug','/portfolio']}>
             <Portfolio />
-          </Route>
-          <Route path='/portfolio/:slug'>
-            <PortfolioDetail />
           </Route>
           <Route path='/contate-me'>
             <ContactMe />

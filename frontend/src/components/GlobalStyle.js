@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 1rem 2rem;
         border: 3px solid #416CD5;
         background: transparent;
-        color: yellow;
+        color: rgb(130, 87, 230);
         transition: all 0.5s ease;
         &:hover{
             background-color: #23d997;

@@ -38,8 +38,11 @@ const Social = styled.a`
     padding-left: 2rem ;
     text-decoration: none;
     &:hover{
-        background: yellow;
+        background: rgb(4, 211, 97);
         cursos: pointer;
+    }
+    &:hover h3{
+        color: black
     }
     h3{
         color: gray;

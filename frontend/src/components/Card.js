@@ -28,7 +28,7 @@ const StyledCard = styled.div`
     border-radius: 1rem;
     cursor: pointer;
     overflow: hidden;
-    border: 1px solid yellow;
+    border: 1px solid rgb(4, 211, 97);
     box-shadow: inset 0 2px 3px 0 rgba(255,255,255,.3), inset 0 -3px 6px 0 rgba(0,0,0,.2), 0 3px 2px 0 rgba(0,0,0,.2);
 `;
 
