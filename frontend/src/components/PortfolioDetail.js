@@ -4,13 +4,26 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useApi } from '../hooks/userApi';
+import { useHistory } from 'react-router-dom';
 
 
 const PortfolioDetail = ({ slug }) => {
     const { data } = useApi(`/portfolio/${slug}`)
 
+    const history = useHistory();
+
+    const exitDetailHandler = (e) => {
+        const element = e.target;
+
+        if(element.classList.contains('shadow')){
+            document.body.style.overflow= 'auto';
+            history.push('/portfolio');
+        }
+    }
+
+
     return (
-        <CardShadow >
+        <CardShadow className='shadow' onClick={exitDetailHandler}>
             <Detail>
                 <Stats>
                     <div>
