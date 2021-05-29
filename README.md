@@ -1,4 +1,4 @@
-# js-fullstack
+# My personal Portfolio
 this is my project for my portfolio. 
 
 # Technologies
