@@ -16,7 +16,7 @@ const PortfolioDetail = ({ slug }) => {
         const element = e.target;
 
         if(element.classList.contains('shadow')){
-            document.body.style.overflow= 'auto';
+            document.body.style.overflowX= 'hidden';
             history.push('/portfolio');
         }
     }

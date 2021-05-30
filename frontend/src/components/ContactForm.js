@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import moment from 'moment';
 import { save } from '../services/Sheet';
 import { set } from 'mongoose';
+import { motion } from 'framer-motion';
+import { iconsSocial, smileAnimation } from '../animation';
 
 const ContactForm = () => {
     const [name, setName] = useState('');
@@ -13,26 +15,34 @@ const ContactForm = () => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
 
-    const cleanForm = () =>{
+    const cleanForm = () => {
         setName('');
-        setEmail('');
-        setMessage('');
+        setEmail('')
+        setMessage('')
     }
 
-    const contactMeHandler = async (e)=>{
+    const contactMeHandler = async (e) => {
         e.preventDefault();
+
+        if (name === '' || email === '' || message === '') {
+            setError(true)
+            return
+        }
+
         const data = {
             Nome: name,
             Email: email,
             Mensagem: message,
             Data: moment().format('DD/MM/YYYY'),
         }
+
         const result = await save(data);
 
-        setSuccess(result);
-        setError(!result);
-
         cleanForm();
+        setSuccess(true);
+        setError(false);
+
+
     }
 
     return (
@@ -64,8 +74,8 @@ const ContactForm = () => {
                 />
             </Input>
             <button type='submit'>Send</button>
-            { success && <Alerts style={{color: 'green'}}>SUCCESS TO SEND A MESSAGE.</Alerts> }
-            { error && <Alerts style={{color: 'red'}} >ERROR TO SEND A MESSAGE.</Alerts> }
+            {success && <Alerts style={{ color: 'green' }}>SUCCESS TO SEND A MESSAGE.</Alerts>}
+            {error && <Alerts style={{ color: 'red' }} >ERROR TO SEND A MESSAGE.</Alerts>}
         </Form>
     )
 }

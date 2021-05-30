@@ -77,3 +77,43 @@ export const scrollReview = {
         }
     }
 }
+
+export const smileAnimation = {
+    hidden: {
+        y: -200
+    },
+    show: {
+        y: 0,
+        transition: {
+            duration: 0.75,
+            ease: 'easeOut'
+        }
+    }
+}
+
+
+export const iconsSocial = {
+    hidden: {
+        x: 200
+    },
+    show: {
+        x: 0,
+        transition: {
+            duration: 0.75,
+            ease: 'easeOut'
+        }
+    }
+}
+
+export const iconsSocialLeft = {
+    hidden: {
+        x: -200
+    },
+    show: {
+        x: 0,
+        transition: {
+            duration: 0.75,
+            ease: 'easeOut'
+        }
+    }
+}
