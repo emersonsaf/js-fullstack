@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import Card from '../components/Card';
-import { useApi } from '../hooks/userApi';
+import { useApi } from '../hooks/useApi';
 import PortfolioDetail from '../components/PortfolioDetail';
 
 import { motion } from 'framer-motion';

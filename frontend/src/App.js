@@ -1,6 +1,8 @@
 import GlobalStyle from './components/GlobalStyle';
 
-import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
+import { useLocation } from 'react-router-dom';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -14,14 +16,14 @@ import Navbar from "./components/Navbar";
 import Admin from './pages/Admin'
 
 function App() {
+  const location = useLocation();
   
   library.add(fab, fas);
-
+  
   return (
     <div>
-      <Router>
         <GlobalStyle />
-        <Navbar />
+        { location.pathname !== '/admin' && <Navbar /> }
         <Switch>
           <Route exact path='/' component={AboutUs} />
           <Route exact path={['/portfolio/:slug','/portfolio']} component={Portfolio} />
@@ -29,7 +31,6 @@ function App() {
           <Route path='/admin' component={Admin}/>
           <Route component={NotFound} />
         </Switch>
-      </Router>
     </div>
   );
 }
