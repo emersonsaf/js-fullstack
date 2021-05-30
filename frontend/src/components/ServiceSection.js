@@ -8,9 +8,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGraduationCap, faImage, faLaptopCode } from '@fortawesome/free-solid-svg-icons'
 import { faGithubSquare } from '@fortawesome/free-brands-svg-icons'
 
+import { scrollReview } from '../animation';
+import { useScroll } from '../hooks/useScroll'
+
 const ServiceSection = () => {
+
+    const [element, controls] = useScroll();
+
     return (
-        <Services>
+        <Services
+            variants={scrollReview}
+            animate={controls}
+            initial='hidden'
+            ref={element}
+        >
             <Image>
                 <img src="https://sites.code.education/wp-content/uploads/2019/02/Mservices.png" />
             </Image>
@@ -19,32 +30,32 @@ const ServiceSection = () => {
                 <Cards>
                     <Card>
                         <div className='icon'>
-                        < FontAwesomeIcon icon={faLaptopCode} size='4x'/>
-                        <h3>Portfolio</h3>
+                            < FontAwesomeIcon icon={faLaptopCode} size='4x' />
+                            <h3>Portfolio</h3>
                         </div>
                         <p>Check my work on my portfolio page.</p>
                     </Card>
                     <Card>
                         <div className='icon'>
-                        < FontAwesomeIcon icon={faGraduationCap} size='4x'/>
-                        <h3>Courses</h3>
+                            < FontAwesomeIcon icon={faGraduationCap} size='4x' />
+                            <h3>Courses</h3>
                         </div>
                         <p>Ruby, PHP, Python, ReactJS and NodeJS.</p>
                     </Card>
                     <Card>
                         <div className='icon'>
-                        < FontAwesomeIcon icon={faImage} size='4x'/>
-                        <h3>Hobbies</h3>
+                            < FontAwesomeIcon icon={faImage} size='4x' />
+                            <h3>Hobbies</h3>
                         </div>
                         <p>I like to play guitar, drawing and play some eletronic games.</p>
 
                     </Card>
                     <Card>
                         <div className='icon'>
-                            < FontAwesomeIcon icon={faGithubSquare} size='4x'/>
+                            < FontAwesomeIcon icon={faGithubSquare} size='4x' />
                             <h3>Github</h3>
                         </div>
-                        <p>See more code in my profile emersonsaf on Github.</p> 
+                        <p>See more code in my profile emersonsaf on Github.</p>
                     </Card>
                 </Cards>
             </ServiceDescription>

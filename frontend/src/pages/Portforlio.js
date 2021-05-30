@@ -7,6 +7,7 @@ import PortfolioDetail from '../components/PortfolioDetail';
 
 import { motion } from 'framer-motion';
 import { pageAnimation } from '../animation'
+import ScrollTop from '../components/ScrollTop';
 
 const Portfolio = () => {
     const location = useLocation();
@@ -30,6 +31,7 @@ const Portfolio = () => {
                     )
                 })}
             </CardList>
+            <ScrollTop />
         </PortfolioList>
     )
 }

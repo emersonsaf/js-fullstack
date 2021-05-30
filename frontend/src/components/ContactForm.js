@@ -29,8 +29,8 @@ const ContactForm = () => {
         }
         const result = await save(data);
 
-        setSuccess(!result);
-        setError(result);
+        setSuccess(result);
+        setError(!result);
 
         cleanForm();
     }
@@ -63,10 +63,9 @@ const ContactForm = () => {
                     onChange={(e) => { setMessage(e.target.value) }}
                 />
             </Input>
-            <button type='submit'>Salvar</button>
-            { success && <Alerts style={{color: 'green'}}>MENSAGEM ENVIADA COM SUCESSO</Alerts> }
-            { error && <Alerts style={{color: 'red'}} >ERRO AO ENVIAR A MENSAGEM</Alerts> }
-           
+            <button type='submit'>Send</button>
+            { success && <Alerts style={{color: 'green'}}>SUCCESS TO SEND A MESSAGE.</Alerts> }
+            { error && <Alerts style={{color: 'red'}} >ERROR TO SEND A MESSAGE.</Alerts> }
         </Form>
     )
 }
