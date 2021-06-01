@@ -5,12 +5,26 @@ import moment from 'moment';
 import styled from 'styled-components';
 
 import { useApi } from '../../hooks/useApi';
+import ModalForm from './ModalForm';
 
 
 const PortfolioList = () => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
+    const [action, setAction] = useState('');
+
 
     const { data } = useApi('/portfolio');
+
+
+    const deleteAction = () => {
+        setAction('Delete');
+        setShow(true);
+    }
+
+    const editAction = () =>{
+        setAction('Edit');
+        setShow(true);
+    } 
 
 
     return (
@@ -34,8 +48,8 @@ const PortfolioList = () => {
                                 <td>{portfolio.title}</td>
                                 <td>{moment(portfolio.createdAt).format('DD/MM/YYYY')}</td>
                                 <td>
-                                    <Button variant="info">Edit</Button>{' '}
-                                    <Button variant="danger" onClick={()=>{setShow(true)}}>Delete</Button>{' '}
+                                    <Button variant="info" onClick={() => {editAction()}}>Edit</Button>{' '}
+                                    <Button variant="danger" onClick={() => {deleteAction()}}>Delete</Button>{' '}
                                 </td>
                             </tr>
                         )
@@ -46,28 +60,8 @@ const PortfolioList = () => {
                 </tbody>
             </Table>
 
-            <Modal
-                show={show}
-                onHide={()=>{setShow(false)}}
-                centered
-                backdrop='static'
-                keyboard={false}
-                animation={true}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>
-                        Action
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Delete Portfolio?
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant='secondary' onClick={()=>{setShow(false)}}>Close</Button>
-                    <Button variant='danger' onClick={()=>{alert('yei')}}>Delete</Button>
-                </Modal.Footer>
-            </Modal>
-
+            
+         <ModalForm show={show} setShow={setShow} action={action}/>
 
         </div>
     )
