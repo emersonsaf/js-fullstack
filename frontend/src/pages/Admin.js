@@ -31,7 +31,8 @@ const Admin = () => {
 }
 
 const Table = styled.div`
-padding: 1rem;
+   
+    padding: 1rem;
     width: 80%;
     min-height: 80vh;
     background: white;
@@ -40,7 +41,6 @@ padding: 1rem;
     left: 10%;
     top: 1%;
     margin-bottom: 10%;
-    z-index: 10;
 `;
 
 const StyledTabs = styled.div`

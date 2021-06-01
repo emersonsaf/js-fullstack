@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Button, Image, Table } from 'react-bootstrap';
+import { Button, Image, Table, Modal } from 'react-bootstrap';
 import moment from 'moment';
 import styled from 'styled-components';
 
@@ -8,14 +8,14 @@ import { useApi } from '../../hooks/useApi';
 
 
 const PortfolioList = () => {
+    const [show, setShow] = useState(true);
 
     const { data } = useApi('/portfolio');
 
-    console.log(data);
 
     return (
         <div>
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="dark" >
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -35,7 +35,7 @@ const PortfolioList = () => {
                                 <td>{moment(portfolio.createdAt).format('DD/MM/YYYY')}</td>
                                 <td>
                                     <Button variant="info">Edit</Button>{' '}
-                                    <Button variant="danger">Delete</Button>{' '}
+                                    <Button variant="danger" onClick={()=>{setShow(true)}}>Delete</Button>{' '}
                                 </td>
                             </tr>
                         )
@@ -45,6 +45,30 @@ const PortfolioList = () => {
 
                 </tbody>
             </Table>
+
+            <Modal
+                show={show}
+                onHide={()=>{setShow(false)}}
+                centered
+                backdrop='static'
+                keyboard={false}
+                animation={true}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        Action
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Delete Portfolio?
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='secondary' onClick={()=>{setShow(false)}}>Close</Button>
+                    <Button variant='danger' onClick={()=>{alert('yei')}}>Delete</Button>
+                </Modal.Footer>
+            </Modal>
+
+
         </div>
     )
 }
