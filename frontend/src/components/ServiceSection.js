@@ -70,6 +70,7 @@ const Services = styled(About)`
     p{
         width: 70%;
         padding: 2rem 0rem 4rem;
+       
     }
 `;
 
@@ -96,6 +97,7 @@ const Card = styled.div`
         background-color: white;
         color: black;
         padding: 1rem;
+        border-radius: 10px;
     }
 `;
 

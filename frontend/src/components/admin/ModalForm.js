@@ -1,8 +1,11 @@
 import React from 'react';
 
 import { Button, Modal } from 'react-bootstrap';
+import PortfolioForm from './PortfolioForm';
 
-const ModalForm = ({ show, setShow, action }) => {
+const ModalForm = ({ show, setShow, currentAction, children }) => {
+
+    console.log(currentAction)
 
     return (
         <Modal
@@ -15,18 +18,19 @@ const ModalForm = ({ show, setShow, action }) => {
         >
             <Modal.Header>
                 <Modal.Title>
-                    {action}
+                    {currentAction.header}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {action === 'Delete' ? 'Gostaria realmente de excluir o registro?' : 'Formulario de Edição'}
+                {children}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant='secondary' onClick={() => { setShow(false) }}>
                     Close</Button>
 
-                <Button variant={action === 'Delete' ? 'danger' : 'info'}
-                    onClick={() => { setShow(false) }}> {action === 'Delete' ? 'Excluir' : 'Editar'}
+                <Button variant={currentAction.btnVariant}
+                    onClick={() => { setShow(false) }}>
+                    {currentAction.btnLabel}
                 </Button>
 
             </Modal.Footer>

@@ -7,25 +7,47 @@ import styled from 'styled-components';
 import { useApi } from '../../hooks/useApi';
 import ModalForm from './ModalForm';
 
+import PortfolioForm from './PortfolioForm';
+
 
 const PortfolioList = () => {
+    const [action, setAction] = useState({
+        del:{
+            header: 'Confirm Delete?',
+            btnVariant: 'danger',
+            btnLabel: 'Confirm',
+            body: 'Are you sure to delete it?'
+        },
+        edit:{
+            header: `Edit`,
+            btnVariant: 'info',
+            btnLabel: 'Save',
+            body: <PortfolioForm />
+        },
+        add: {
+            header: 'Add a new Portfolio',
+            btnVariant: 'primary',
+            btnLabel: 'Save',
+            body: <PortfolioForm />
+        }
+    });
+
+    const [currentAction, setCurrentAction] = useState({
+            header: '',
+            btnVariant: '',
+            btnLabel: '',
+            body: ''
+    });
+
     const [show, setShow] = useState(false);
-    const [action, setAction] = useState('');
-
-
     const { data } = useApi('/portfolio');
 
 
-    const deleteAction = () => {
-        setAction('Delete');
+    const handleShow = (slug, actn) => {
+        console.log(actn)
+        setCurrentAction(actn);
         setShow(true);
     }
-
-    const editAction = () =>{
-        setAction('Edit');
-        setShow(true);
-    } 
-
 
     return (
         <div>
@@ -48,20 +70,20 @@ const PortfolioList = () => {
                                 <td>{portfolio.title}</td>
                                 <td>{moment(portfolio.createdAt).format('DD/MM/YYYY')}</td>
                                 <td>
-                                    <Button variant="info" onClick={() => {editAction()}}>Edit</Button>{' '}
-                                    <Button variant="danger" onClick={() => {deleteAction()}}>Delete</Button>{' '}
+                                    <Button variant="info" onClick={() => { handleShow(portfolio.slug, action.edit) }}>Edit</Button>{' '}
+                                    <Button variant="danger" onClick={() => { handleShow(portfolio.slug, action.del) }}>Delete</Button>{' '}
                                 </td>
                             </tr>
                         )
                     })}
-                    <Button variant="primary">New Portfolio</Button>{' '}
-
-
+                    <Button variant="primary" onClick={() => { handleShow('', action.add) }}>Add Portfolio</Button>{' '}
                 </tbody>
             </Table>
 
-            
-         <ModalForm show={show} setShow={setShow} action={action}/>
+
+            <ModalForm show={show} setShow={setShow} currentAction={currentAction} >
+                {currentAction.body}
+            </ModalForm>
 
         </div>
     )
