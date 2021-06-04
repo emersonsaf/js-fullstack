@@ -83,16 +83,15 @@ router.patch('/:slug', async (req, res) => {
 
 
 // "DELETE" ROUTE, NEVER DELETE A REGISTER, ONLY FLAG WITH DELETED
-router.patch('/delete/:slug', async (req, res) => {
+router.delete('/:slug', async (req, res) => {
     try {
-        const updatedPortfolio = await Portfolio.updateOne({
+        const deletePortfolio = await Portfolio.deleteOne({
             slug: req.params.slug
-        }, {
-            isDeleted: true,
         });
+
         res.json({
             success: true,
-            data: updatedPortfolio
+            data: deletePortfolio
         })
     } catch (err) {
         res.json({

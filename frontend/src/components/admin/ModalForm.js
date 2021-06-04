@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { Button, Modal } from 'react-bootstrap';
-import PortfolioForm from './PortfolioForm';
 
-const ModalForm = ({ show, setShow, currentAction, children }) => {
+const ModalForm = ({ show, setShow, currentAction, slug, children }) => {
 
-    console.log(currentAction)
+    const handleAction = () => {
+        currentAction.callBack(slug ,children.props)
+        setShow(false);
+    }
 
     return (
         <Modal
@@ -15,6 +17,8 @@ const ModalForm = ({ show, setShow, currentAction, children }) => {
             backdrop='static'
             keyboard={false}
             animation={true}
+            size='lg'
+
         >
             <Modal.Header>
                 <Modal.Title>
@@ -29,7 +33,7 @@ const ModalForm = ({ show, setShow, currentAction, children }) => {
                     Close</Button>
 
                 <Button variant={currentAction.btnVariant}
-                    onClick={() => { setShow(false) }}>
+                    onClick={() => { handleAction() }}>
                     {currentAction.btnLabel}
                 </Button>
 
