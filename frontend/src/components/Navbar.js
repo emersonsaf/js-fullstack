@@ -1,14 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import { Link } from 'react-router-dom'
+import { LogoutButton } from '../components/auth/Authentication';
+
+import Userfront from "@userfront/react";
+
+Userfront.init("pn45vpby");
+
 
 const Navbar = () => {
     const menuOptions = {
         about: '<About Me />',
         portfolio: '<Portfolio />',
-        contact: '<Contact Me />'
+        contact: '<Contact Me />',
+        cadastro: 'Cadastro',
+        logar: 'Logar'
     }
 
     return (
@@ -18,6 +26,18 @@ const Navbar = () => {
                 <li><Link to='/'>{menuOptions.about} </Link></li>
                 <li><Link to='/portfolio'>{menuOptions.portfolio}</Link></li>
                 <li><Link to='/contate-me'>{menuOptions.contact}</Link></li>
+                {
+                    !Userfront.accessToken() && (
+                        <>
+                            <li><Link to='/logar'>{menuOptions.logar}</Link></li>
+                            <li><Link to='/cadastrar' >{menuOptions.cadastro}</Link></li>
+                        </>
+                    )
+                }
+                {
+                    Userfront.accessToken() && <li><LogoutButton /></li>
+                }
+
             </ul>
         </StyledNav>
     )
@@ -39,11 +59,14 @@ const StyledNav = styled.nav`
         list-style: none;
     }
     li{
-        padding-left: 10rem;
+        padding-left: 5rem;
     }
     a{
         color: white;
         text-decoration: none;
+    }
+    LogoutButton{
+        size: 1rem
     }
 `;
 

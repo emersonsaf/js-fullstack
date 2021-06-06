@@ -6,23 +6,51 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import styled from 'styled-components'
 
 import PortfolioList from '../components/admin/PortfolioList';
+import WellcomeTab from '../components/admin/WellcomeTab';
 
-const Admin = () => {
+import { Redirect } from 'react-router-dom';
+
+import Userfront from '@userfront/react'
+
+import jwt_decode from 'jwt-decode'
+
+Userfront.init("pn45vpby");
+
+const Admin = ({ location }) => {
+    if (!Userfront.accessToken()) {
+        return (<Redirect to={{
+            pathname: '/logar',
+            state: { from: location }
+        }} />
+        )
+    }
+
+    const accessData = jwt_decode(Userfront.accessToken())
+    const userData = jwt_decode(Userfront.idToken())
+
+    const access = JSON.stringify(accessData)
+    const user = JSON.stringify(userData)
+
     return (
         <Table>
             <Jumbotron>
-                <h1>Administrator Painel</h1>
+                <h1>Painel Administrator</h1>
             </Jumbotron>
             <StyledTabs>
                 <Tabs style={{ backgroundColor: 'white' }} defaultActiveKey="profile" id="uncontrolled-tab-example">
-                    <Tab eventKey="home" title="Home">
-                        <h1>Wellcome Home</h1>
+                    <Tab eventKey="home" defaultActiveKey='home' title="Home">
+                        <WellcomeTab />
                     </Tab>
                     <Tab eventKey="portfolio" title="Portfolio">
                         <PortfolioList />
                     </Tab>
                     <Tab eventKey="technologies" title="Technologies" >
                         <h1>Lista de Tecnologias</h1>
+                    </Tab>
+                    <Tab eventKey="user" title="User">
+                        <p>User</p>
+                        <p>{access}</p>
+                        <p>{user}</p>
                     </Tab>
                 </Tabs>
             </StyledTabs>

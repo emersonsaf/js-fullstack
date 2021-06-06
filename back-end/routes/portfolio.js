@@ -1,7 +1,9 @@
 // Routes for my portfolio 
 const router = require('express').Router();
 
-const Portfolio = require('../models/Portfolio')
+const auth = require('../middlewares/auth');
+
+const Portfolio = require('../models/Portfolio');
 
 // CREATE ROUTE
 router.post('/', async (req, res) => {
@@ -25,7 +27,7 @@ router.post('/', async (req, res) => {
 
 // READ ROUTE
 router.get('/', async (req, res) => {
-    try {
+       try {
         const portfolios = await Portfolio.find()
         res.json({
             success: true,

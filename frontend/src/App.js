@@ -15,22 +15,26 @@ import ContactMe from "./pages/ContacteMe";
 import Navbar from "./components/Navbar";
 import Admin from './pages/Admin'
 
+import { SignupForm, LoginForm } from '../src/components/auth/Authentication'
+
 function App() {
   const location = useLocation();
-  
+
   library.add(fab, fas);
-  
+
   return (
     <div>
-        <GlobalStyle />
-        { location.pathname !== '/admin' && <Navbar /> }
-        <Switch>
-          <Route exact path='/' component={AboutUs} />
-          <Route exact path={['/portfolio/:slug','/portfolio']} component={Portfolio} />
-          <Route path='/contate-me' component={ContactMe} />
-          <Route path='/admin' component={Admin}/>
-          <Route component={NotFound} />
-        </Switch>
+      <GlobalStyle />
+      { location.pathname !== '/admin' && <Navbar />}
+      <Switch>
+        <Route exact path='/' component={AboutUs} />
+        <Route exact path={['/portfolio/:slug', '/portfolio']} component={Portfolio} />
+        <Route path='/contate-me' component={ContactMe} />
+        <Route path='/admin' component={Admin} />
+        <Route path='/logar' component={LoginForm} />
+        <Route path='/cadastrar' component={SignupForm} />
+        <Route component={NotFound} />
+      </Switch>
     </div>
   );
 }
